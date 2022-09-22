@@ -272,4 +272,5 @@ public class RecipeControllerTest {
         this.mvc.perform(requestBuilder)
                 .andExpect(status().isNotFound());
     }
+
 }
