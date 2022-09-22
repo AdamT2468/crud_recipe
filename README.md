@@ -2,23 +2,23 @@
 With nightmare Modes -- use this one
 
 And a new CRUD prompt:
-CRUD	| Verb	| Path	      | Name	           | Purpose
-Create	| POST	| /recipe	      | “create” route   | Creates a recipe entry
-Read	| GET	| /recipe/{id} | “show” route	   | Responds with a single recipe
+CRUD	| Verb	| Path | Name | Purpose
+Create	| POST	| /recipe	 | “create” route | Creates a recipe entry
+Read	| GET	| /recipe/{id} | “show” route	 | Responds with a single recipe
 Update	| PATCH	| /recipe/{id} | “update” route | Updates attributes of the recipe
-Delete	| DELETE| /recipe/{id} | “delete” route  | Deletes the recipe at the id
-List	       | GET	| /recipe	      | “list” route        | Responds with a list of recipes
+Delete	| DELETE| /recipe/{id} | “delete” route | Deletes the recipe at the id
+List	 | GET	| /recipe	 | “list” route | Responds with a list of recipes
 
 In Your Database:
 Recipe Entity:
 
 Data Type	Attribute
-Long	           id
-String 	       description
-String             instructions
-String             title
-int                   calories
-LocalDate        dateCreated
+Long id
+String description
+String instructions
+String title
+int calories
+LocalDate dateCreated
 
 Bonus: Add a filter based on optional Minimum and/or Maximum calories
 Bonus 2: Add a sort parameter to allow for sorting by calories (both ASC and DESC)
