@@ -4,7 +4,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Map;
 import java.util.NoSuchElementException;
@@ -27,6 +29,30 @@ public class RecipeController {
     public Recipe postRecipe(@RequestBody Recipe recipe){
         return this.repository.save(recipe);
     }
+
+    @GetMapping("/recipe/find/{calories}")
+    public List<Recipe> getMaxCaloriesList (@PathVariable Integer calories){
+
+        return this.repository.findByCalories(calories);
+    }
+
+    @GetMapping("/recipe/less/{calories}")
+    public List<Recipe> getMaxCalories (@PathVariable Integer calories){
+        return this.repository.findByCaloriesLessThanEqual(calories);
+    }
+
+    @GetMapping("/recipe/order/ascend")
+    public List<Recipe> getAscCalories (){
+        return this.repository.findByCaloriesOrderByCaloriesAsc();
+    }
+
+    @GetMapping("/recipe/between")                     //http://localhost:8080/recipe/between/?calories1=100&calories2=500
+    public List<Recipe> findBetweenDate (@RequestParam Integer calories1, @RequestParam Integer calories2){
+        calories1 = 0;
+        return this.repository.findByCaloriesBetween(calories1, calories2);
+    }
+
+
 
     @GetMapping("/recipe/{id}")
     public Recipe getRecipeId(@PathVariable long id){
